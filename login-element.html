@@ -14,10 +14,15 @@
         display: block;
         @apply --login-element;
       }
+      .cont{
+        margin: 0px auto;
+        display: flex;
+      }
 
       /*ESTILOS DE LA PAPER CARD*/
       paper-card{
         --paper-card:{
+            margin: 0 auto;
             padding: 30px;
             border: 4px solid transparent;
             border-image: linear-gradient(150deg, #f10295, #8e0aaf);
@@ -86,6 +91,7 @@
 
 
     </style>
+    <div class="cont">
     <paper-card hidden$="[[encendido]]">
       <h2>[[title]]</h2>
       <paper-input class="custom-input" type="email" label="Email">
@@ -95,14 +101,10 @@
         <iron-icon icon="lock" slot="prefix"></iron-icon>
       </paper-input>
       <paper-checkbox style="display: block;">Remember me</paper-checkbox>
-      <paper-button raised class="custom pink">Login</paper-button>
+      <paper-button raised class="custom pink" on-click="algo">Login</paper-button>
       <slot></slot>
     </paper-card>
-
-
-    <!--Esto es una prueba-->
-    <iron-icon hidden$="[[ encendido]]" icon="icons:cloud-done"></iron-icon>
-    <iron-icon hidden$="[[! encendido]]" icon="icons:cloud-off"></iron-icon>
+  </div>
   </template>
 
     <script>
@@ -135,7 +137,9 @@
                     }
                 };
             }
-
+            algo(e) {
+                alert("Aqui hace algo");
+            }
         }
 
         window.customElements.define(LoginElement.is, LoginElement);
