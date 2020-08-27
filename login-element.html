@@ -5,6 +5,7 @@
 <link rel="import" href="../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-form/iron-form.html">
 
 
 <dom-module id="login-element">
@@ -92,16 +93,18 @@
 
     </style>
     <div class="cont">
-    <paper-card hidden$="[[encendido]]">
+    <paper-card elevation="2">
       <h2>[[title]]</h2>
-      <paper-input class="custom-input" type="email" label="Email">
+      <form is="iron-form" id="form">
+      <paper-input id="inputmail" class="custom-input" label="Email" value="[[email]]">
         <iron-icon icon="mail" slot="prefix"></iron-icon>
       </paper-input>
-      <paper-input class="custom-input" label="Contraseña" type="password">
+      <paper-input id="inputpas" class="custom-input" label="Password" type="password" value="[[pas]]">
         <iron-icon icon="lock" slot="prefix"></iron-icon>
       </paper-input>
       <paper-checkbox style="display: block;">Remember me</paper-checkbox>
-      <paper-button raised class="custom pink" on-click="algo">Login</paper-button>
+      <paper-button raised class="custom pink" id="login" on-click="algo">Login</paper-button>
+      </form>
       <slot></slot>
     </paper-card>
   </div>
@@ -122,26 +125,39 @@
             }
             static get properties() {
                 return {
-                    prop1: {
-                        type: String,
-                        value: 'login-element'
-                    },
                     title: {
                         type: String,
                         value: 'Login'
                     },
-                    encendido: {
+                    userLog: {
                         type: Boolean,
-                        notify: true,
-                        value: false
+                        value: false,
+                        notify: true
+                    },
+                    email: {
+                        type: String,
+                        value: '',
+                        notify: true
+                    },
+                    pas: {
+                        type: String,
+                        value: '',
+                        notify: true
                     }
                 };
             }
-            algo(e) {
-                alert("Aqui hace algo");
+            algo() {
+                let email = this.$.inputmail.value;
+                let pas = this.$.inputpas.value;
+                if (email == 'mit@gmail.com' && pas == 'mit') {
+                    alert("Has ingresado correctamente " + email);
+                    this.userLog = true;
+                } else {
+                    alert("Hay un problema en tu inicio");
+                    this.userLog = false;
+                }
             }
         }
-
         window.customElements.define(LoginElement.is, LoginElement);
     </script>
 </dom-module>

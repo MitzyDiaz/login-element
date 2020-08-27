@@ -9,7 +9,8 @@
     "paper-input": "PolymerElements/paper-input#2.2.3",
     "paper-checkbox": "https://github.com/PolymerElements/paper-checkbox.git#v2.0.4",
     "iron-icon": "https://github.com/PolymerElements/iron-icon.git#v2.1.0",
-    "iron-icons": "https://github.com/PolymerElements/iron-icons.git#v2.1.1"
+    "iron-icons": "https://github.com/PolymerElements/iron-icons.git#v2.1.1",
+    "iron-form": "https://github.com/PolymerElements/iron-form.git#v2.4.0"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
